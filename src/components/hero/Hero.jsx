@@ -6,7 +6,7 @@ const Hero = () => {
         <h1 className="text-[#fff] text-3xl md:text-5xl rancho">
           Would you like a Cup of Delicious Coffee?
         </h1>
-        <p className="text-[#fff] raleway text-sm md:text-[16px] md:py-2">
+        <p className="text-[#fff] raleway text-sm md:text-[16px] py-1 md:py-3">
           It's coffee time - Sip & Savor - Relaxation in every sip! Get the
           nostalgia back!! Your companion of every moment!!! Enjoy the beautiful
           moments and make them memorable.
