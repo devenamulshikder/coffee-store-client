@@ -1,4 +1,3 @@
-// import heroBg from '../../assets/images/more/3.png';
 import "./hero.css";
 const Hero = () => {
   return (
@@ -12,7 +11,7 @@ const Hero = () => {
           nostalgia back!! Your companion of every moment!!! Enjoy the beautiful
           moments and make them memorable.
         </p>
-        <button className="bg-[#E3B577] py-1 px-4 text-xl md:text-2xl">
+        <button className="bg-[#E3B577] rancho py-1 px-4 text-xl md:text-2xl">
           Learn More
         </button>
       </div>

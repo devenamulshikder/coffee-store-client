@@ -1,10 +1,12 @@
 import React from 'react';
 import Hero from '../../components/hero/Hero';
+import Quality from '../../components/qualities/Quality';
 
 const Home = () => {
     return (
-        <div className='rancho text-5xl'>
+        <div className=''>
             <Hero/>
+            <Quality/>
         </div>
     );
 };
