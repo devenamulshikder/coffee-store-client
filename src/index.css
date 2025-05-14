@@ -4,9 +4,17 @@
 @plugin "daisyui" {
   themes: light --default, light --prefersdark;
 }
+@plugin "daisyui/theme" {
+  name: "light";
+  default: true;
+  --color-primary: #331A15;
+  --color-secondary: #1B1A1A;
+}
 .rancho {
   font-family: "Rancho", cursive;
+  
 }
 .raleway {
   font-family: "Raleway", sans-serif;
+  
 }

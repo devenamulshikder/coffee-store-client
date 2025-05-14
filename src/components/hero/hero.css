@@ -1,0 +1,7 @@
+.hero-bg{
+    background-image: url('../../assets/images/more/3.png');
+    background-position: center;
+    object-fit: cover;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
