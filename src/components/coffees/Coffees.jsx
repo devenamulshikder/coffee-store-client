@@ -12,7 +12,7 @@ const Coffees = () => {
         <h3 className="text-3xl md:text-5xl rancho text-primary text-center my-2">
           Our Popular Products
         </h3>
-        <Link className="text-[#fff] text-2xl font-normal bg-[#E3B577] border-2 border-[#331A15] rancho btn mt-3">
+        <Link to={'/addCoffee'} className="text-[#fff] text-2xl font-normal bg-[#E3B577] border-2 border-[#331A15] rancho btn mt-3">
           Add Coffee
           <LuCoffee className="text-primary " />
         </Link>
