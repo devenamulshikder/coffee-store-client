@@ -1,27 +1,33 @@
 import { IoIosArrowRoundBack } from "react-icons/io";
 import { Link } from "react-router";
+import Swal from "sweetalert2";
 
 const AddCoffee = () => {
   const handleAddToCoffee = (e) => {
     e.preventDefault();
     const form = e.target;
-    const name = form.name.value;
-    const chef = form.chef.value;
-    const supplier = form.supplier.value;
-    const taste = form.taste.value;
-    const category = form.category.value;
-    const details = form.details.value;
-    const photo = form.photo.value;
-    const coffeeItem = {
-      name,
-      chef,
-      supplier,
-      taste,
-      category,
-      details,
-      photo,
-    };
-    console.log(coffeeItem);
+    const formData = new FormData(form);
+    const newCoffee = Object.fromEntries(formData.entries());
+
+    // safe coffee data to the db
+    fetch("http://localhost:5000/coffees", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(newCoffee),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if(data.acknowledged){
+            Swal.fire({
+              title: "New Coffee Added Successfully!",
+              icon: "success",
+              draggable: true,
+            });
+        }
+        e.target.reset()
+      });
   };
 
   return (
