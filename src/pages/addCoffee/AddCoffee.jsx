@@ -1,14 +1,12 @@
 import { IoIosArrowRoundBack } from "react-icons/io";
 import { Link } from "react-router";
 import Swal from "sweetalert2";
-
 const AddCoffee = () => {
   const handleAddToCoffee = (e) => {
     e.preventDefault();
     const form = e.target;
     const formData = new FormData(form);
     const newCoffee = Object.fromEntries(formData.entries());
-
     // safe coffee data to the db
     fetch("http://localhost:5000/coffees", {
       method: "POST",
@@ -21,15 +19,16 @@ const AddCoffee = () => {
       .then((data) => {
         if(data.acknowledged){
             Swal.fire({
-              title: "New Coffee Added Successfully!",
+              position: "top-end",
               icon: "success",
-              draggable: true,
+              title: "New Coffee Added Successfully!",
+              showConfirmButton: false,
+              timer: 1500,
             });
         }
         e.target.reset()
       });
   };
-
   return (
     <div className="bg-[url('https://i.postimg.cc/5tv1Xnj4/11.png')]">
       <div className="max-w-7xl mx-auto">
@@ -62,6 +61,7 @@ const AddCoffee = () => {
                 <input
                   type="text"
                   name="name"
+                  required
                   placeholder="Enter coffee name"
                   className="px-4 py-3 bg-[#fff] raleway focus:bg-transparent w-full text-sm text-slate-900 outline-[#333] rounded-sm transition-all"
                 />
@@ -73,6 +73,7 @@ const AddCoffee = () => {
                 <input
                   type="text"
                   name="chef"
+                  required
                   placeholder="Enter coffee chef"
                   className="px-4 py-3 bg-[#fff] raleway focus:bg-transparent w-full text-sm text-slate-900 outline-[#333] rounded-sm transition-all"
                 />
@@ -151,5 +152,4 @@ const AddCoffee = () => {
     </div>
   );
 };
-
 export default AddCoffee;
