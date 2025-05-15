@@ -1,4 +1,4 @@
-import { use } from "react";
+import { use, useState } from "react";
 import coffees1Bg from "../../assets/images/more/4.png";
 import coffees2Bg from "../../assets/images/more/5.png";
 import { LuCoffee } from "react-icons/lu";
@@ -8,7 +8,8 @@ const coffeesPromise = fetch("http://localhost:5000/coffees").then((res) =>
   res.json()
 );
 const Coffees = () => {
-  const coffeeData = use(coffeesPromise);
+  const initialCoffees = use(coffeesPromise);
+  const [coffeeData, setCoffeeData] = useState(initialCoffees);
   return (
     <div className=" my-10 md:my-20 text-center">
       <img className="md:absolute hidden md:flex" src={coffees1Bg} alt="" />
@@ -30,7 +31,12 @@ const Coffees = () => {
       <div className="max-w-7xl mx-auto my-8 md:my-14 relative">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
           {coffeeData.map((coffee, idx) => (
-            <Coffee coffee={coffee} key={idx} />
+            <Coffee
+              coffee={coffee}
+              coffeeData={coffeeData}
+              setCoffeeData={setCoffeeData}
+              key={idx}
+            />
           ))}
         </div>
       </div>
