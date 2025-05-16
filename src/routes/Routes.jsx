@@ -4,11 +4,13 @@ import Home from "../pages/Home/Home";
 import AddCoffee from "../pages/addCoffee/AddCoffee";
 import CoffeeDetails from "../components/coffeeDetails/CoffeeDetails";
 import UpdateCoffee from "../components/updateCoffee/UpdateCoffee";
+import ErrorPage from "../pages/Error/ErrorPage";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     Component: Root,
+    errorElement:<ErrorPage/>,
     children: [
       {
         index: true,
