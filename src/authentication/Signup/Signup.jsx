@@ -1,8 +1,65 @@
+import { use } from "react";
 import { Link } from "react-router";
+import { AuthContext } from "../../provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const Signup = () => {
+  const { createUser, setUser } = use(AuthContext);
   const handleSignup = (e) => {
     e.preventDefault();
+    const form = e.target;
+    const formData = new FormData(form);
+
+    const { email, password, ...restFormData } = Object.fromEntries(
+      formData.entries()
+    );
+    createUser(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        const userProfile = {
+          email,
+          ...restFormData,
+          creationTime: user?.metadata?.creationTime,
+          lastSignInTime: user?.metadata?.lastSignInTime,
+        };
+
+        // save profile info in the db
+        fetch("http://localhost:5000/users", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(userProfile),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.insertedId) {
+              Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "User created successfully!",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+            }
+          });
+
+        setUser(user);
+        e.target.reset();
+      })
+      .catch((err) => {
+        Swal.fire({
+          position: "top-end",
+          icon: "error",
+          title: `${
+            err.message && "Already use created account please Sign in"
+          }`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        e.target.reset();
+      });
   };
   return (
     <div className="bg-[url('https://i.postimg.cc/5tv1Xnj4/11.png')]">
