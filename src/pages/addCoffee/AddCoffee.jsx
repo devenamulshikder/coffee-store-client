@@ -8,7 +8,7 @@ const AddCoffee = () => {
     const formData = new FormData(form);
     const newCoffee = Object.fromEntries(formData.entries());
     // safe coffee data to the db
-    fetch("http://localhost:5000/coffees", {
+    fetch("https://coffee-store-server-rose-five.vercel.app/coffees", {
       method: "POST",
       headers: {
         "content-type": "application/json",

@@ -25,13 +25,13 @@ export const router = createBrowserRouter([
       {
         path: "/coffeeDetails/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/coffees/${params.id}`),
+          fetch(`https://coffee-store-server-rose-five.vercel.app/coffees/${params.id}`),
         Component: CoffeeDetails,
       },
       {
         path: "/updateCoffee/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/coffees/${params.id}`),
+          fetch(`https://coffee-store-server-rose-five.vercel.app/coffees/${params.id}`),
         Component: UpdateCoffee,
       },
       {

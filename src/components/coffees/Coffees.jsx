@@ -4,7 +4,7 @@ import coffees2Bg from "../../assets/images/more/5.png";
 import { LuCoffee } from "react-icons/lu";
 import { Link } from "react-router";
 import Coffee from "../coffee/Coffee";
-const coffeesPromise = fetch("http://localhost:5000/coffees").then((res) =>
+const coffeesPromise = fetch("https://coffee-store-server-rose-five.vercel.app/coffees").then((res) =>
   res.json()
 );
 const Coffees = () => {

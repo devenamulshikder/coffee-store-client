@@ -1,9 +1,10 @@
 import { use } from "react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../../provider/AuthProvider";
 import Swal from "sweetalert2";
 
 const Signup = () => {
+  const navigate = useNavigate()
   const { createUser, setUser } = use(AuthContext);
   const handleSignup = (e) => {
     e.preventDefault();
@@ -25,7 +26,7 @@ const Signup = () => {
         };
 
         // save profile info in the db
-        fetch("http://localhost:5000/users", {
+        fetch("https://coffee-store-server-rose-five.vercel.app/users", {
           method: "POST",
           headers: {
             "content-type": "application/json",
@@ -47,6 +48,7 @@ const Signup = () => {
 
         setUser(user);
         e.target.reset();
+        navigate('/')
       })
       .catch((err) => {
         Swal.fire({
